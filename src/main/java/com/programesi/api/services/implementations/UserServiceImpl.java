@@ -21,14 +21,11 @@ public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
 
-    private final TimeworkRepository timeworkRepository;
 
     public UserServiceImpl(
-            @Autowired UserRepository userRepository,
-            @Autowired TimeworkRepository timeworkRepository
+            @Autowired UserRepository userRepository
     ) {
         this.userRepository = userRepository;
-        this.timeworkRepository = timeworkRepository;
     }
 
     @Override
@@ -53,28 +50,5 @@ public class UserServiceImpl implements IUserService {
         user.setLastName(model.lastName);
         userRepository.save(user);
         return ResponseEntity.created(URI.create("")).body(model);
-    }
-
-    @Override
-    public ResponseEntity<TimeworkDTO> createTimeWork(TimeworkDTO model) {
-        Optional<User> user = userRepository.findById(model.userId);
-        Timework timework = new Timework();
-        timework.setEntryHour(model.entryHour);
-        timework.setExitHour(model.exitHour);
-        timework.setDescription(model.description);
-        timework.setInitials(model.initials);
-        user.ifPresent(timework::setUser);
-        timeworkRepository.save(timework);
-        return ResponseEntity.created(URI.create("")).body(model);
-    }
-
-    @Override
-    public List<Timework> findTimeworks() {
-        return timeworkRepository.findAll();
-    }
-
-    @Override
-    public Optional<Timework> findTimework(Long id) {
-        return timeworkRepository.findById(id);
     }
 }
