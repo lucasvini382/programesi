@@ -6,13 +6,13 @@ CREATE TABLE IF NOT EXISTS pgs_usr_user(
                                            usr_last_name VARCHAR
 );
 
-CREATE TABLE IF NOT EXISTS tiw_time_work(
-                                            tiw_id serial not null constraint pgs_tiw_time_work_pk primary key,
-                                            tiw_entry_hour VARCHAR,
-                                            tiw_exit_hour VARCHAR,
-                                            tiw_description VARCHAR,
-                                            tiw_initials VARCHAR,
-                                            tiw_user_id INTEGER
+CREATE TABLE IF NOT EXISTS pgs_tiw_time_work(
+                                                tiw_id serial not null constraint pgs_tiw_time_work_pk primary key,
+                                                tiw_entry_hour VARCHAR,
+                                                tiw_exit_hour VARCHAR,
+                                                tiw_description VARCHAR,
+                                                tiw_initials VARCHAR,
+                                                tiw_user_id INTEGER
 );
 
 alter table tiw_time_work

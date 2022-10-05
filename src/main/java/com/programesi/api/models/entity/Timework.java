@@ -1,6 +1,14 @@
 package com.programesi.api.models.entity;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "pgs_tiw_time_work")
@@ -23,6 +31,7 @@ public class Timework {
     @Column(name = "tiw_initials")
     private String initials;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tiw_user_id", referencedColumnName = "usr_id")
     private User user;
