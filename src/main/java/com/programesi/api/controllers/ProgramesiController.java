@@ -1,9 +1,6 @@
 package com.programesi.api.controllers;
 
-import com.programesi.api.models.dto.CalendarDTO;
-import com.programesi.api.models.dto.ErrorDTO;
-import com.programesi.api.models.dto.TimeworkDTO;
-import com.programesi.api.models.dto.UserDTO;
+import com.programesi.api.models.dto.*;
 import com.programesi.api.models.entity.Calendar;
 import com.programesi.api.models.entity.Timework;
 import com.programesi.api.models.entity.User;
@@ -12,12 +9,8 @@ import com.programesi.api.services.IUserService;
 import com.programesi.api.services.exceptions.UserAlreadyExistsException;
 import com.programesi.api.services.ICalendarService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +39,14 @@ public class ProgramesiController {
     @GetMapping("/user/{id}")
     public Optional<User> findUser(@PathVariable(value = "id") Long id) {
         return userService.findUser(id);
+    }
+
+    @GetMapping("/user/login")
+    public Optional<User> loginUser(@RequestHeader String login, @RequestHeader String password) {
+        LoginDTO header = new LoginDTO();
+        header.login = login;
+        header.password = password;
+        return userService.loginUser(header);
     }
 
     @PostMapping("/user")

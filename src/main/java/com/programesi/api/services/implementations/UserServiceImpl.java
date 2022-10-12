@@ -1,5 +1,6 @@
 package com.programesi.api.services.implementations;
 
+import com.programesi.api.models.dto.LoginDTO;
 import com.programesi.api.models.dto.TimeworkDTO;
 import com.programesi.api.models.dto.UserDTO;
 import com.programesi.api.models.entity.Timework;
@@ -50,5 +51,10 @@ public class UserServiceImpl implements IUserService {
         user.setLastName(model.lastName);
         userRepository.save(user);
         return ResponseEntity.created(URI.create("")).body(model);
+    }
+
+    @Override
+    public Optional<User> loginUser(LoginDTO header) {
+        return userRepository.findByLoginAndPassword(header.login, header.password);
     }
 }
