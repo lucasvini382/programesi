@@ -10,5 +10,5 @@ public class TimeworkDTO {
 
     public String initials;
 
-    public Long userId;
+    public String userId;
 }

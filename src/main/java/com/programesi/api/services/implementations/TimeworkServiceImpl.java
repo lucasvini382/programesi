@@ -28,7 +28,7 @@ public class TimeworkServiceImpl implements ITimeworkService {
 
     @Override
     public ResponseEntity<TimeworkDTO> createTimeWork(TimeworkDTO model) {
-        Optional<User> user = userRepository.findById(model.userId);
+        Optional<User> user = userRepository.findById(Long.valueOf(model.userId));
         Timework timework = new Timework();
         timework.setEntryHour(model.entryHour);
         timework.setExitHour(model.exitHour);

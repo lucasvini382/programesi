@@ -1,6 +1,7 @@
 package com.programesi.api.services;
 
 import com.programesi.api.models.dto.CalendarDTO;
+import com.programesi.api.models.entity.Calendar;
 import com.programesi.api.models.entity.Timework;
 import org.springframework.http.ResponseEntity;
 
@@ -11,7 +12,7 @@ public interface ICalendarService {
 
     ResponseEntity<CalendarDTO> createCalendar(CalendarDTO model);
 
-    List<Timework> findTimeworks();
+    List<Calendar> findCalendars();
 
-    Optional<Timework> findTimework(Long id);
+    Optional<Calendar> findCalendar(Long id);
 }

@@ -79,12 +79,12 @@ public class ProgramesiController {
     }
 
     @GetMapping("/calendar")
-    public List<Timework> findCalendars() {
-        return calendarService.findTimeworks();
+    public List<Calendar> findCalendars() {
+        return calendarService.findCalendars();
     }
 
     @GetMapping("/calendar/{id}")
-    public Optional<Timework> findCalendar(@PathVariable(value = "id") Long id) {
-        return calendarService.findTimework(id);
+    public Optional<Calendar> findCalendar(@PathVariable(value = "id") Long id) {
+        return calendarService.findCalendar(id);
     }
 }

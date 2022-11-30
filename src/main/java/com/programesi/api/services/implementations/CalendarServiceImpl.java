@@ -43,12 +43,12 @@ public class CalendarServiceImpl implements ICalendarService {
     }
 
     @Override
-    public List<Timework> findTimeworks() {
-        return null;
+    public List<Calendar> findCalendars() {
+        return calendarRepository.findAll();
     }
 
     @Override
-    public Optional<Timework> findTimework(Long id) {
-        return Optional.empty();
+    public Optional<Calendar> findCalendar(Long id) {
+        return calendarRepository.findById(id);
     }
 }
