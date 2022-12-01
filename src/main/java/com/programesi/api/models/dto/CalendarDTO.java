@@ -3,5 +3,5 @@ package com.programesi.api.models.dto;
 public class CalendarDTO {
     public String date;
     public String initials;
-    public Long userId;
+    public String userId;
 }

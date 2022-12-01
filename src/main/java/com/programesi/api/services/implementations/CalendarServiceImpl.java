@@ -34,7 +34,7 @@ public class CalendarServiceImpl implements ICalendarService {
 
     @Override
     public ResponseEntity<CalendarDTO> createCalendar(CalendarDTO model) {
-        Optional <Timework> timework = timeworkRepository.findByUserIdAndInitials(model.userId, model.initials);
+        Optional <Timework> timework = timeworkRepository.findById(Long.valueOf(model.userId));
         Calendar calendar = new Calendar();
         calendar.setDate(LocalDate.parse(model.date));
         timework.ifPresent(calendar::setTimework);

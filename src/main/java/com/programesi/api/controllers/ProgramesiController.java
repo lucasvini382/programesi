@@ -59,7 +59,7 @@ public class ProgramesiController {
     }
 
     @PostMapping("/time-work")
-    public ResponseEntity<?> createTimeWork(@RequestBody TimeworkDTO model) {
+    public Timework createTimeWork(@RequestBody TimeworkDTO model) {
         return timeworkService.createTimeWork(model);
         }
 

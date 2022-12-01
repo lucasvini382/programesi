@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ITimeworkService {
 
-    ResponseEntity<TimeworkDTO> createTimeWork(TimeworkDTO model);
+    Timework createTimeWork(TimeworkDTO model);
 
     List<Timework> findTimeworks();
 
